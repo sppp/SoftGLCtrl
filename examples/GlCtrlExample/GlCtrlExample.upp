@@ -1,0 +1,14 @@
+description "The U++ GlCtrl example using TinyGL.\377";
+
+uses
+	CtrlLib,
+	TinyGL;
+
+file
+	GlCtrlExample.h,
+	main.cpp;
+
+mainconfig
+	"" = "GUI",
+	"" = "GUI USEMALLOC";
+

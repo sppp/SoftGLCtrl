@@ -1,0 +1,14 @@
+description "The classic GL Gears example.\377";
+
+uses
+	CtrlLib,
+	TinyGL;
+
+file
+	Gears.h,
+	main.cpp;
+
+mainconfig
+	"" = "GUI",
+	"" = "GUI USEMALLOC";
+

@@ -1,0 +1,46 @@
+description "\377B0,0,128";
+
+uses
+	CtrlLib;
+
+file
+	TinyGL.h,
+	TinyGL.cpp,
+	Api.cpp,
+	Arrays.cpp,
+	Clear.cpp,
+	Clip.cpp,
+	Error.cpp,
+	Get.cpp,
+	Glu.cpp,
+	ImageUtil.cpp,
+	Init.cpp,
+	Light.cpp,
+	List.cpp,
+	Matrix.cpp,
+	Memory.cpp,
+	Misc.cpp,
+	MsgHandling.h,
+	MsgHandling.cpp,
+	OpInfo.h,
+	OsContext.h,
+	OsContext.cpp,
+	Select.cpp,
+	SpecBuffer.h,
+	SpecBuffer.cpp,
+	Texture.cpp,
+	Vertex.cpp,
+	ZBuffer.cpp,
+	ZDither.cpp,
+	ZGl.h,
+	ZLine.cpp,
+	ZLine.h,
+	ZMath.h,
+	ZMath.cpp,
+	ZTriangle.h,
+	ZTriangle.cpp;
+
+mainconfig
+	"" = "",
+	"" = "MT GUI X11";
+
