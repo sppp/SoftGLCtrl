@@ -16,6 +16,7 @@ class GLCtrl : public Ctrl {
 	ZBuffer *frameBuffer = NULL;
 	int width = 0, height = 0;
 	bool is_open = false;
+	GLContext *ctx = NULL;
 	
 	
 	void OpenGL(int w, int h);

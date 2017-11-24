@@ -4,7 +4,6 @@ namespace Upp {
 
 
 GLCtrl::GLCtrl() {
-	ASSERT_(gl_get_context() == NULL, "Multiple gl contextes is not supported yet");
 	
 }
 
@@ -20,14 +19,19 @@ void GLCtrl::OpenGL(int width, int height) {
 	frameBuffer = ZB_open(width, height, ZB_MODE_RGBA, 0, 0, 0, 0);
 	glInit(frameBuffer);
 	
+	ctx = gl_ctx;
+	gl_ctx = NULL;
+	
 	is_open = true;
 }
 
 void GLCtrl::CloseGL() {
 	if (!is_open) return;
 	
+	gl_ctx = ctx;
 	glClose();
 	ZB_close(frameBuffer);
+	ctx = NULL;
 	
 	is_open = false;
 }
@@ -35,16 +39,22 @@ void GLCtrl::CloseGL() {
 void GLCtrl::Layout() {
 	Size sz = GetSize();
 	OpenGL(sz.cx, sz.cy);
+	
+	gl_ctx = ctx;
 	GLResize(sz.cx, sz.cy);
+	gl_ctx = NULL;
 }
 
 void GLCtrl::Paint(Draw& w) {
 	if (!is_open)
 		return;
 	
-	GLPaint();
-	
 	ImageBuffer buf(width, height);
+	
+	gl_ctx = ctx;
+	GLPaint();
+	gl_ctx = NULL;
+	
 	#if TGL_FEATURE_RENDER_BITS == 32
 	byte* argb = (byte*)frameBuffer->pbuf;
 	RGBA* cur = buf.Begin();
