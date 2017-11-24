@@ -60,7 +60,7 @@ typedef unsigned char PIXEL;
 #elif TGL_FEATURE_RENDER_BITS == 32
 
 #define RGB_TO_PIXEL(r,g,b) \
-  ((((r) << 8) & 0xff0000) | ((g) & 0xff00) | ((b) >> 8) /*| 0xff000000*/)
+  ((((r) << 8) & 0xff0000) | ((g) & 0xff00) | ((b) >> 8) | 0xff000000)
 typedef unsigned int PIXEL;
 #define PSZB 4
 #define PSZSH 5

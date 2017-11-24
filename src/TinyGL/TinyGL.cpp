@@ -49,30 +49,15 @@ void GLCtrl::Paint(Draw& w) {
 	if (!is_open)
 		return;
 	
-	ImageBuffer buf(width, height);
-	
+	#if TGL_FEATURE_RENDER_BITS == 32
 	gl_ctx = ctx;
 	GLPaint();
 	gl_ctx = NULL;
 	
-	#if TGL_FEATURE_RENDER_BITS == 32
-	byte* argb = (byte*)frameBuffer->pbuf;
-	RGBA* cur = buf.Begin();
-	RGBA* end = buf.End();
-	while (cur != end) {
-		RGBA& red = *cur;
-		red.b = argb[0];
-		red.g = argb[1];
-		red.r = argb[2];
-		red.a = 0xff;
-		cur++;
-		argb+=4;
-	}
+	SetSurface(w, 0, 0, frameBuffer->xsize, frameBuffer->ysize, (RGBA*)frameBuffer->pbuf);
 	#else
 		#error "Not implemented"
 	#endif
-	
-	w.DrawImage(0, 0, buf);
 }
 
 void GLCtrl::StdView() {
