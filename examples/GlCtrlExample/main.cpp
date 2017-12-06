@@ -38,8 +38,8 @@ struct OpenGLExample : GLCtrl {
 			glEnd();
 		glPopMatrix();
 		t = 13 * point.y;
-		float sn = (float)sin(t / 300);
-		float cs = (float)cos(t / 300);
+		GLfloat sn = (GLfloat)sin(t / 300);
+		GLfloat cs = (GLfloat)cos(t / 300);
 		glTranslatef(sn + cs, sn, -6 - cs);
 		glRotated(t / 12.0, 0, 0, 1);
 		glRotated(t / 15.0, 0, 1, 0);
